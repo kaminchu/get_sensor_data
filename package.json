@@ -1,0 +1,16 @@
+{
+  "name": "get_sensor_data",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node ./app.js",
+    "build": "git clone https://github.com/karaage0703/denpa-gardening",
+    "aaa":"echo aaaa"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "child_process": "^1.0.2"
+  }
+}
