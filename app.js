@@ -13,7 +13,7 @@ http.createServer(function (request, response) {
 			date: splitData[0],
 			temp: parseFloat(psplitData[1]),
 			hum: parseFloat(splitData[2]),
-			pressure: (splitData[3])
+			pressure: parseFloat(splitData[3])
 		}
 		response.writeHead(200, {'Content-Type': 'application/json'});
 		response.end(JSON.stringify(jsonData));
