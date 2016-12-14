@@ -11,7 +11,7 @@ http.createServer(function (request, response) {
 		var splitData = stdout.trimRight().split(",");
 		var jsonData = {
 			date: splitData[0],
-			temp: parseFloat(psplitData[1]),
+			temp: parseFloat(splitData[1]),
 			hum: parseFloat(splitData[2]),
 			pressure: parseFloat(splitData[3])
 		}
