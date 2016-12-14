@@ -11,9 +11,9 @@ http.createServer(function (request, response) {
 		var splitData = stdout.trimRight().split(",");
 		var jsonData = {
 			date: splitData[0],
-			temp: splitData[1],
-			hum: splitData[2],
-			pressure: splitData[3]
+			temp: parseFloat(psplitData[1]),
+			hum: parseFloat(splitData[2]),
+			pressure: (splitData[3])
 		}
 		response.writeHead(200, {'Content-Type': 'application/json'});
 		response.end(JSON.stringify(jsonData));
