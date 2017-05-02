@@ -7,7 +7,7 @@ http.createServer(function (request, response) {
 
     bme280.begin(function(err) {
         if (err) {
-            console.error("bme280 initializing error",err);
+            console.error("bme280 initializing error", err);
             response.writeHead(500);
             return;
         }
@@ -21,7 +21,7 @@ http.createServer(function (request, response) {
             response.writeHead(200, {'Content-Type': 'application/json'});
             response.end(JSON.stringify(jsonData));
         });
-	});
+    });
 }).listen(3000);
 
 console.info("http://localhost:3000/");
