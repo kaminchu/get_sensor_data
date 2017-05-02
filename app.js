@@ -1,25 +1,27 @@
-var path = require('path');
-var exec = require('child_process').exec;
-var http = require('http');
-var child;
+var BME280 = require("node-bme280");
+var http = require("http");
 
-var workDir = path.dirname(process.argv[1]);
+var bme280 = new BME280({address: 0x76});
 
 http.createServer(function (request, response) {
 
-	child = exec("python " + workDir + "/denpa-gardening/get_sensor_data.py", function (error, stdout, stderr) {
-		var splitData = stdout.trimRight().split(",");
-		var jsonData = {
-			date: splitData[0],
-			temp: parseFloat(splitData[1]),
-			hum: parseFloat(splitData[2]),
-			pressure: parseFloat(splitData[3])
-		}
-		response.writeHead(200, {'Content-Type': 'application/json'});
-		response.end(JSON.stringify(jsonData));
+    bme280.begin(function(err) {
+        if (err) {
+            console.error("bme280 initializing error",err);
+            response.writeHead(500);
+            return;
+        }
+
+        bme280.readPressureAndTemparature(function(err, pressure, temperature, humidity){
+            var jsonData = {
+                temperature: temperature,
+                humidity: humidity,
+                pressure: pressure
+            };
+            response.writeHead(200, {'Content-Type': 'application/json'});
+            response.end(JSON.stringify(jsonData));
+        });
 	});
 }).listen(3000);
 
-
-
-
+console.info("http://localhost:3000/");

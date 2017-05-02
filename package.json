@@ -4,13 +4,11 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node ./app.js",
-    "build": "git clone https://github.com/karaage0703/denpa-gardening",
-    "aaa":"echo aaaa"
+    "start": "node ./app.js"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "child_process": "^1.0.2"
+    "node-bme280": "^0.1.3"
   }
 }
